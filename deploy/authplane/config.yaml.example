@@ -1,0 +1,39 @@
+server:
+  issuer: https://__PUBLIC_HOST__
+  address: "127.0.0.1:9000"
+  shutdown_wait: 20s
+  allowed_origins: ["https://chatgpt.com"]
+storage:
+  driver: sqlite
+  sqlite:
+    path: /var/lib/authplane/authserver.db
+    wal: true
+signing:
+  algorithm: ES256
+  key_store: keyfile
+  key_path: /var/lib/authplane/keys
+session:
+  secure: true
+  same_site: lax
+admin:
+  enabled: true
+  address: "127.0.0.1:9001"
+dcr:
+  mode: approved_redirects
+  approved_redirects:
+    - "https://chatgpt.com/connector_platform_oauth_redirect"
+cimd:
+  enabled: true
+oauth:
+  default_client_scope: "notes:read"
+  require_scope: true
+client_credentials:
+  enabled: false
+data_encryption:
+  driver: aes_master
+  aes_master:
+    key_env: AUTHPLANE_DATA_ENCRYPTION_KEY
+observability:
+  logging:
+    level: info
+    format: json

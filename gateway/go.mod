@@ -1,0 +1,10 @@
+module example.com/private-icloud-notes-gateway
+
+go 1.25.0
+
+require (
+	github.com/authplane/go-sdk/core v0.4.0
+	github.com/authplane/go-sdk/http v0.4.0
+)
+
+require github.com/go-jose/go-jose/v4 v4.1.4 // indirect

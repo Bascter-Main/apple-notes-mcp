@@ -1,0 +1,28 @@
+[Unit]
+Description=OAuth gateway for private iCloud Notes MCP
+After=network-online.target nginx.service authplane.service notes-mcp.service
+Wants=network-online.target
+Requires=authplane.service notes-mcp.service
+
+[Service]
+Type=simple
+User=notesgateway
+Group=notesgateway
+EnvironmentFile=/etc/notes-gateway/gateway.env
+ExecStart=/usr/local/bin/notes-gateway
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

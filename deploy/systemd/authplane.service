@@ -1,0 +1,29 @@
+[Unit]
+Description=Authplane OAuth for private iCloud Notes MCP
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=authplane
+Group=authplane
+EnvironmentFile=/etc/authplane/secrets.env
+ExecStart=/usr/local/bin/authserver serve --config /etc/authplane/config.yaml
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30s
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/authplane
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

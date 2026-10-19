@@ -1,0 +1,24 @@
+[Unit]
+Description=Private read-only iCloud Notes MCP
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=notesmcp
+Group=notesmcp
+EnvironmentFile=/etc/notes-mcp/config.env
+ExecStart=/opt/icloud-notes-mcp/bin/notes-mcp
+Restart=on-failure
+RestartSec=15
+StateDirectory=notes-mcp
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/notes-mcp
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

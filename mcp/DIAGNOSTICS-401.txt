@@ -1,0 +1,19 @@
+CloudKit 401: next steps
+=======================
+1. Check https://www.icloud.com/notes/ from a browser with the same Apple Account.
+   - If web Notes isn't accessible (especially with Advanced Data Protection): the Go login may not authorize Notes. Do not weaken Apple account security just to pass this test.
+   - If web Notes works: proceed.
+2. Upload this diagnostic version as a new source directory on VPS and rebuild:
+      bash scripts/bootstrap.sh
+      sudo install -m 0755 bin/notesctl /opt/icloud-notes-mcp/bin/notesctl
+   Leave notes-mcp daemon binary unchanged. Do not copy local state directories.
+3. Inspect encrypted session metadata safely:
+      sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl -action session-check -state-dir /var/lib/notes-mcp
+4. Run a single same-process sign-in/read test:
+      sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl -action login-test -state-dir /var/lib/notes-mcp
+5. If LIVE_READ_OK, test the process restore path:
+      sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl -action folders -state-dir /var/lib/notes-mcp
+6. Share ONLY session_metadata booleans + LIVE_READ_OK/FAILED + HTTP status, not emails, authentication tokens or Notes content.
+
+Unrelated sudo warning fix (Debian/Ubuntu convention):
+      getent hosts "$(hostname)" || printf '127.0.1.1\t%s\n' "$(hostname)" | sudo tee -a /etc/hosts

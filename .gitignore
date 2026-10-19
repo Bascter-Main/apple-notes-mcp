@@ -1,0 +1,37 @@
+# Local deployment settings and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.enc
+*.pem
+*.p12
+*.pfx
+*.token
+secrets.env
+gateway.env
+config.env
+
+# Runtime state, databases, logs, and generated reports
+.private/
+var/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.log
+gitleaks-report.*
+
+# Build output and fetched upstream checkout
+bin/
+dist/
+gateway/notes-gateway
+mcp/third_party/
+mcp/bin/
+
+# Tool and editor noise
+__pycache__/
+*.py[cod]
+.DS_Store
+.idea/
+.vscode/
