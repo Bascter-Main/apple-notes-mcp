@@ -1,6 +1,6 @@
 # Apple Notes MCP
 
-[中文](README.md)
+[中文](README.md) | **English**
 
 A read-only MCP service that securely connects Apple Notes to ChatGPT. It reads allowlisted Apple Notes data stored in iCloud on your own server and exposes MCP tools through HTTPS and OAuth, allowing GPT to retrieve folders, note metadata, and note text during a conversation.
 

@@ -1,6 +1,6 @@
 # Apple Notes MCP
 
-[English](README_EN.md)
+**中文** | [English](README_EN.md)
 
 一个将 Apple「备忘录」安全连接到 ChatGPT 的只读 MCP 服务。它在你的服务器上读取经白名单授权、存储于 iCloud 的 Apple 备忘录，并通过 HTTPS 与 OAuth 向 ChatGPT 提供 MCP 工具，使 GPT 能够在对话中检索文件夹、笔记元数据和正文。
 
