@@ -11,8 +11,8 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"example.com/icloud-notes-mcp/internal/model"
-	"example.com/icloud-notes-mcp/internal/reader"
+	"example.com/apple-notes-mcp/internal/model"
+	"example.com/apple-notes-mcp/internal/reader"
 )
 
 // This small, dependency-free Streamable HTTP server implements the MCP tool
@@ -151,7 +151,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		default:
 			pv = "2025-11-25"
 		}
-		respond(w, req.ID, map[string]any{"protocolVersion": pv, "capabilities": map[string]any{"tools": map[string]any{"listChanged": false}}, "serverInfo": map[string]any{"name": "icloud-notes-readonly", "version": version}}, nil)
+		respond(w, req.ID, map[string]any{"protocolVersion": pv, "capabilities": map[string]any{"tools": map[string]any{"listChanged": false}}, "serverInfo": map[string]any{"name": "apple-notes-readonly", "version": version}}, nil)
 	case "ping":
 		respond(w, req.ID, map[string]any{}, nil)
 	case "tools/list":

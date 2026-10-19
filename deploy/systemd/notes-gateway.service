@@ -1,5 +1,5 @@
 [Unit]
-Description=OAuth gateway for private iCloud Notes MCP
+Description=OAuth gateway for private Apple Notes MCP
 After=network-online.target nginx.service authplane.service notes-mcp.service
 Wants=network-online.target
 Requires=authplane.service notes-mcp.service

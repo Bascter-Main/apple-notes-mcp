@@ -1,5 +1,5 @@
 [Unit]
-Description=Authplane OAuth for private iCloud Notes MCP
+Description=Authplane OAuth for private Apple Notes MCP
 After=network-online.target
 Wants=network-online.target
 

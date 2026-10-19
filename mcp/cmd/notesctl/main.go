@@ -15,8 +15,8 @@ import (
 	"github.com/torkve/icloud-notes/icloud"
 	"github.com/torkve/icloud-notes/notes"
 
-	"example.com/icloud-notes-mcp/internal/icloudadapter"
-	"example.com/icloud-notes-mcp/internal/security"
+	"example.com/apple-notes-mcp/internal/icloudadapter"
+	"example.com/apple-notes-mcp/internal/security"
 )
 
 func main() {
@@ -106,7 +106,7 @@ func login(ctx context.Context, store security.FileStore, variant int, liveTest 
 		return fmt.Errorf("no signed-in client returned")
 	}
 	if liveTest {
-		fmt.Fprintln(os.Stderr, "Testing iCloud Notes in the original login process. No note text will be printed...")
+		fmt.Fprintln(os.Stderr, "Testing Apple Notes in the original login process. No note text will be printed...")
 		folders, err := client.ListFolders(ctx, notes.FolderID(""))
 		if err != nil {
 			return fmt.Errorf("LIVE_READ_FAILED (before saving/restoring session): %w", err)

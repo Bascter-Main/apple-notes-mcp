@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/icloud-notes-mcp/internal/model"
+	"example.com/apple-notes-mcp/internal/model"
 )
 
 type testSource struct{ snap model.Snapshot }

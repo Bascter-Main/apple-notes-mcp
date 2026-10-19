@@ -1,4 +1,4 @@
-module example.com/private-icloud-notes-gateway
+module example.com/private-apple-notes-gateway
 
 go 1.25.0
 

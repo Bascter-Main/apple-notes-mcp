@@ -13,9 +13,9 @@ import (
 	"syscall"
 	"time"
 
-	"example.com/icloud-notes-mcp/internal/icloudadapter"
-	"example.com/icloud-notes-mcp/internal/mcp"
-	"example.com/icloud-notes-mcp/internal/security"
+	"example.com/apple-notes-mcp/internal/icloudadapter"
+	"example.com/apple-notes-mcp/internal/mcp"
+	"example.com/apple-notes-mcp/internal/security"
 )
 
 func env(k, def string) string {

@@ -1,8 +1,8 @@
-# iCloud Notes MCP
+# Apple Notes MCP
 
 [中文](README.md)
 
-A read-only MCP service that securely connects Apple Notes to ChatGPT. It reads allowlisted iCloud notes on your own server and exposes MCP tools through HTTPS and OAuth, allowing GPT to retrieve folders, note metadata, and note text during a conversation.
+A read-only MCP service that securely connects Apple Notes to ChatGPT. It reads allowlisted Apple Notes data stored in iCloud on your own server and exposes MCP tools through HTTPS and OAuth, allowing GPT to retrieve folders, note metadata, and note text during a conversation.
 
 This project is not an official Apple SDK. Its adapter relies on undocumented CloudKit endpoints and may require changes when Apple updates its services.
 
@@ -30,7 +30,7 @@ notes-gateway 127.0.0.1:8766
 notes-mcp 127.0.0.1:8765
    │  enforces the folder allowlist and read-only tools
    ▼
-iCloud Notes / CloudKit
+Apple Notes / iCloud CloudKit
 
 Authplane 127.0.0.1:9000  OAuth service
 Authplane 127.0.0.1:9001  admin API, never public
@@ -71,8 +71,8 @@ The firewall only needs SSH, HTTP, and HTTPS. Do not expose `8765`, `8766`, `900
 ### 2. Download the repository and configure the hostname
 
 ```bash
-git clone https://github.com/Bascter-Main/icloud-notes-mcp.git
-cd icloud-notes-mcp
+git clone https://github.com/Bascter-Main/apple-notes-mcp.git
+cd apple-notes-mcp
 cp .env.example .env
 ```
 
@@ -108,7 +108,7 @@ sudo bash scripts/install-vps.sh
 Sign in from the SSH terminal:
 
 ```bash
-sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl \
+sudo -u notesmcp /opt/apple-notes-mcp/bin/notesctl \
   -action login -state-dir /var/lib/notes-mcp
 ```
 
@@ -117,7 +117,7 @@ Enter the Apple ID, password, and six-digit verification code when prompted. Nev
 List iCloud folder names and IDs:
 
 ```bash
-sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl \
+sudo -u notesmcp /opt/apple-notes-mcp/bin/notesctl \
   -action folders -state-dir /var/lib/notes-mcp
 ```
 
@@ -138,7 +138,7 @@ Separate multiple root IDs with commas. Each root automatically includes all des
 Optionally count notes under one root without printing bodies:
 
 ```bash
-sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl \
+sudo -u notesmcp /opt/apple-notes-mcp/bin/notesctl \
   -action probe -root 'FOLDER_ID' -state-dir /var/lib/notes-mcp
 ```
 
@@ -225,7 +225,7 @@ Expected results:
 
 1. Open **Plugins** in ChatGPT on the web.
 2. Select the plus button, then **Add custom MCP server**.
-3. Enter a name such as `iCloud Notes`.
+3. Enter a name such as `Apple Notes`.
 4. Set the Server URL to `https://your-domain.example/mcp`.
 5. Select **OAuth** authentication and use the server's advertised CIMD configuration.
 6. Review the risk warning, create the plugin, and install it from your personal plugins.

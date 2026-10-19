@@ -33,9 +33,9 @@ The installer does not start the service. In your SSH terminal, sign in and
 select a non-sensitive test folder:
 
 ```bash
-sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl \
+sudo -u notesmcp /opt/apple-notes-mcp/bin/notesctl \
   -action login -state-dir /var/lib/notes-mcp
-sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl \
+sudo -u notesmcp /opt/apple-notes-mcp/bin/notesctl \
   -action folders -state-dir /var/lib/notes-mcp
 sudoedit /etc/notes-mcp/config.env
 sudo systemctl enable --now notes-mcp

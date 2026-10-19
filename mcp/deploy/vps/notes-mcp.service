@@ -1,5 +1,5 @@
 [Unit]
-Description=Private read-only iCloud Notes MCP
+Description=Private read-only Apple Notes MCP
 After=network-online.target
 Wants=network-online.target
 
@@ -8,7 +8,7 @@ Type=simple
 User=notesmcp
 Group=notesmcp
 EnvironmentFile=/etc/notes-mcp/config.env
-ExecStart=/opt/icloud-notes-mcp/bin/notes-mcp
+ExecStart=/opt/apple-notes-mcp/bin/notes-mcp
 Restart=on-failure
 RestartSec=15
 StateDirectory=notes-mcp

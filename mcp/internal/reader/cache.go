@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"example.com/icloud-notes-mcp/internal/model"
+	"example.com/apple-notes-mcp/internal/model"
 )
 
 // Cache is in-process only. No copies of Notes are written to disk.

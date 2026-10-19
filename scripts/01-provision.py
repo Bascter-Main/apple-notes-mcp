@@ -72,28 +72,28 @@ def ensure_resource():
     resources = api("GET", "/admin/resources")
     if not isinstance(resources, list):
         abort("unexpected /admin/resources JSON; stop instead of creating duplicates")
-    matches = [r for r in resources if r.get("slug") == "icloud-notes"]
+    matches = [r for r in resources if r.get("uri") == RESOURCE]
     if len(matches) > 1:
-        abort("multiple resources with same slug")
+        abort("multiple resources with the same URI")
     if matches:
         r = matches[0]
-        if r.get("uri") != RESOURCE or r.get("backend_kind") != "mint":
-            abort("existing resource slug conflicts with required URI/kind")
+        if r.get("backend_kind") != "mint":
+            abort("existing resource URI conflicts with required backend kind")
         scopes = r.get("scopes", [])
         if "notes:read" not in [s.get("name") for s in scopes if isinstance(s, dict)]:
             abort("existing resource does not have notes:read; manual review required")
         print("Resource already exists with expected URI and read scope")
         return
     created = api("POST", "/admin/resources", {
-        "slug": "icloud-notes",
+        "slug": "apple-notes",
         "uri": RESOURCE,
         "backend_kind": "mint",
-        "display_name": "Private iCloud Notes (read only)",
-        "scopes": [{"name": "notes:read", "upstream": "", "description": "Read selected iCloud Notes"}],
+        "display_name": "Private Apple Notes (read only)",
+        "scopes": [{"name": "notes:read", "upstream": "", "description": "Read selected Apple Notes"}],
     })
     if not isinstance(created, dict) or created.get("uri") != RESOURCE:
         abort("resource response does not confirm expected URI")
-    print("Resource created: icloud-notes -> " + RESOURCE)
+    print("Resource created: apple-notes -> " + RESOURCE)
 
 
 def ensure_user():

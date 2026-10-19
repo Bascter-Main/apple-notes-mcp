@@ -14,8 +14,8 @@ import (
 	"github.com/torkve/icloud-notes/icloud"
 	"github.com/torkve/icloud-notes/notes"
 
-	"example.com/icloud-notes-mcp/internal/model"
-	"example.com/icloud-notes-mcp/internal/security"
+	"example.com/apple-notes-mcp/internal/model"
+	"example.com/apple-notes-mcp/internal/security"
 )
 
 type Source struct {

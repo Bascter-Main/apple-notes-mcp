@@ -6,8 +6,8 @@ import (
 	"context"
 	"errors"
 
-	"example.com/icloud-notes-mcp/internal/model"
-	"example.com/icloud-notes-mcp/internal/security"
+	"example.com/apple-notes-mcp/internal/model"
+	"example.com/apple-notes-mcp/internal/security"
 )
 
 type Source struct{}

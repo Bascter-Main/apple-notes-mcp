@@ -1,8 +1,8 @@
-# iCloud Notes MCP
+# Apple Notes MCP
 
 [English](README_EN.md)
 
-一个将 Apple「备忘录」安全连接到 ChatGPT 的只读 MCP 服务。它在你的服务器上读取经白名单授权的 iCloud 备忘录，并通过 HTTPS 与 OAuth 向 ChatGPT 提供 MCP 工具，使 GPT 能够在对话中检索文件夹、笔记元数据和正文。
+一个将 Apple「备忘录」安全连接到 ChatGPT 的只读 MCP 服务。它在你的服务器上读取经白名单授权、存储于 iCloud 的 Apple 备忘录，并通过 HTTPS 与 OAuth 向 ChatGPT 提供 MCP 工具，使 GPT 能够在对话中检索文件夹、笔记元数据和正文。
 
 本项目不是 Apple 官方 SDK。底层适配器依赖未公开的 CloudKit 接口，Apple 更新服务后可能需要重新适配。
 
@@ -30,7 +30,7 @@ notes-gateway 127.0.0.1:8766
 notes-mcp 127.0.0.1:8765
    │  强制执行文件夹白名单和只读工具
    ▼
-iCloud Notes / CloudKit
+Apple Notes / iCloud CloudKit
 
 Authplane 127.0.0.1:9000  OAuth 服务
 Authplane 127.0.0.1:9001  管理接口，不对公网开放
@@ -71,8 +71,8 @@ sudo certbot certonly --nginx -d mcp.example.com
 ### 2. 下载项目并设置域名
 
 ```bash
-git clone https://github.com/Bascter-Main/icloud-notes-mcp.git
-cd icloud-notes-mcp
+git clone https://github.com/Bascter-Main/apple-notes-mcp.git
+cd apple-notes-mcp
 cp .env.example .env
 ```
 
@@ -108,7 +108,7 @@ sudo bash scripts/install-vps.sh
 先在 SSH 终端登录：
 
 ```bash
-sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl \
+sudo -u notesmcp /opt/apple-notes-mcp/bin/notesctl \
   -action login -state-dir /var/lib/notes-mcp
 ```
 
@@ -117,7 +117,7 @@ sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl \
 列出 iCloud 文件夹名称与 ID：
 
 ```bash
-sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl \
+sudo -u notesmcp /opt/apple-notes-mcp/bin/notesctl \
   -action folders -state-dir /var/lib/notes-mcp
 ```
 
@@ -138,7 +138,7 @@ ALLOWED_FOLDER_IDS=你的文件夹ID
 可选：只统计某个根文件夹中的笔记，不输出正文：
 
 ```bash
-sudo -u notesmcp /opt/icloud-notes-mcp/bin/notesctl \
+sudo -u notesmcp /opt/apple-notes-mcp/bin/notesctl \
   -action probe -root '文件夹ID' -state-dir /var/lib/notes-mcp
 ```
 
@@ -225,7 +225,7 @@ sudo ss -lntp \
 
 1. 在 ChatGPT 网页端打开 **Plugins**。
 2. 点击加号，选择 **Add custom MCP server**。
-3. 填写名称，例如 `iCloud Notes`。
+3. 填写名称，例如 `Apple Notes`。
 4. Server URL 填写 `https://你的域名/mcp`。
 5. Authentication 选择 **OAuth**，并使用服务器公布的 CIMD 配置。
 6. 阅读风险提示后创建插件，在个人插件中安装。

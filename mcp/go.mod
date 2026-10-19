@@ -1,4 +1,4 @@
-module example.com/icloud-notes-mcp
+module example.com/apple-notes-mcp
 
 go 1.26
 

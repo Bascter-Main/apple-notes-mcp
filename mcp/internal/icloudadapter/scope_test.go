@@ -3,7 +3,7 @@
 package icloudadapter
 
 import (
-	"example.com/icloud-notes-mcp/internal/model"
+	"example.com/apple-notes-mcp/internal/model"
 	"testing"
 )
 
